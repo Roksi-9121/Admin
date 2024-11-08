@@ -1,0 +1,232 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes">
+
+    <!-- TextBox for Login-->
+    <Style TargetType="TextBox" x:Key="RoundedTextBoxWithIconStyle">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Grid>
+                        <Border Background="White" 
+                            CornerRadius="15" 
+                            BorderBrush="Gray" 
+                            BorderThickness="1">
+                            <Grid>
+                                <materialDesign:PackIcon Kind="User" Width="20" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5" Foreground="Gray"/>
+                                <ScrollViewer x:Name="PART_ContentHost" Margin="30,0,5,0"/>
+                            </Grid>
+                        </Border>
+
+                        <TextBlock x:Name="PlaceholderText" 
+                               Text="Email address" 
+                               Foreground="DarkGray" 
+                               VerticalAlignment="Center"
+                               Margin="30,0,0,0"
+                               FontSize="14">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource AncestorType=TextBox}}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource AncestorType=TextBox}}" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Padding" Value="10,5"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <!-- PasswordBox for Login-->
+    <Style TargetType="PasswordBox" x:Key="RoundedPasswordBoxWithIconStyle">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="PasswordBox">
+                    <Grid>
+                        <Border Background="White"
+                        CornerRadius="15"
+                        BorderBrush="Gray"
+                        BorderThickness="1">
+                            <Grid>
+                                <materialDesign:PackIcon Kind="LockOutline" Width="20" Height="20" HorizontalAlignment="Left" VerticalAlignment="Center"
+                            Margin="5,0,0,0" Foreground="Gray" />
+                                <ScrollViewer x:Name="PART_ContentHost" Margin="30,0,5,0" />
+                            </Grid>
+                        </Border>
+
+                        <TextBlock x:Name="PlaceholderText"
+                           Text="Password"  
+                           Foreground="DarkGray"
+                           Margin="30,0,0,0"
+                           VerticalAlignment="Center"
+                           FontSize="14">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource AncestorType=PasswordBox}}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource AncestorType=PasswordBox}}" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Padding" Value="10,5" />
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="FontSize" Value="14" />
+    </Style>
+
+    <!-- TextBox for SignUp-->
+    <Style x:Key="UnderlineTextBoxWithHint" TargetType="TextBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBox">
+                    <Grid>
+                        <TextBlock x:Name="HintTextBlock" 
+                           Text="{Binding Tag, RelativeSource={RelativeSource AncestorType=TextBox}}"
+                           Foreground="Gray"  
+                           VerticalAlignment="Center" 
+                           Margin="0,0,0,5" 
+                           Opacity="0.5">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource AncestorType=TextBox}}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource AncestorType=TextBox}}" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+
+                        <ScrollViewer x:Name="PART_ContentHost"/>
+
+                        <Border x:Name="border" 
+                        BorderBrush="Transparent" 
+                        BorderThickness="0" 
+                        Background="Transparent" 
+                        VerticalAlignment="Bottom">
+                            <Line X1="0" Y1="0" X2="{Binding ActualWidth, ElementName=border}" Y2="0"
+                          Stroke="Black" StrokeThickness="2" />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Width" Value="250" />
+        <Setter Property="Margin" Value="10 0" />
+        <Setter Property="Height" Value="25" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="CaretBrush" Value="Black" />
+        <Setter Property="SelectionBrush" Value="Black" />
+        <Setter Property="Tag" Value="Enter User Email" />
+    </Style>
+
+    <!-- PasswordBox for SignUp-->
+    <Style x:Key="UnderlinePasswordBoxWithHint" TargetType="PasswordBox">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="PasswordBox">
+                    <Grid>
+                        <TextBlock x:Name="HintTextBlock" Text="{Binding Tag, RelativeSource={RelativeSource AncestorType=PasswordBox}}" Foreground="Gray" 
+                               VerticalAlignment="Center"  Margin="0,0,0,5" Opacity="0.5">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Setter Property="Visibility" Value="Collapsed"/>
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource AncestorType=PasswordBox}}" Value="">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                        <DataTrigger Binding="{Binding Text, RelativeSource={RelativeSource AncestorType=PasswordBox}}" Value="{x:Null}">
+                                            <Setter Property="Visibility" Value="Visible"/>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <ScrollViewer x:Name="PART_ContentHost" />
+                        <Border x:Name="border" 
+                    BorderBrush="Transparent" 
+                    BorderThickness="0" 
+                    Background="Transparent" 
+                    VerticalAlignment="Bottom">
+                            <Line X1="0" Y1="0" X2="{Binding ActualWidth, ElementName=border}" Y2="0"
+                      Stroke="Black" StrokeThickness="2" />
+                        </Border>
+                    </Grid>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+        <Setter Property="Foreground" Value="Black" />
+        <Setter Property="Background" Value="Transparent" />
+        <Setter Property="Width" Value="250" />
+        <Setter Property="Margin" Value="10 0" />
+        <Setter Property="Height" Value="25" />
+        <Setter Property="Padding" Value="0" />
+        <Setter Property="CaretBrush" Value="Black" />
+        <Setter Property="SelectionBrush" Value="Black" />
+        <Setter Property="Tag" Value="Enter password" />
+    </Style>
+    
+    
+    <!-- SearchBox for User Control-->
+    <Style x:Key="secondaruText" TargetType="TextBlock">
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Margin" Value="0 5"/>
+        <Setter Property="Foreground" Value="#b7b7b7"/>
+    </Style>
+
+    <Style x:Key="searchTextBox" TargetType="TextBox">
+        <Setter Property="Background" Value="#f7f6f4"/>
+        <Setter Property="Foreground" Value="#a0a0a0"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Padding" Value="15 13 40 13"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="TextBoxBase">
+                    <Border x:Name="border" CornerRadius="20" Background="{TemplateBinding Background}"
+                            BorderThickness="{TemplateBinding BorderThickness}" BorderBrush="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                        <ScrollViewer x:Name="PART_ContentHost" Focusable="False" HorizontalScrollBarVisibility="Hidden" VerticalScrollBarVisibility="Hidden"/>
+                    </Border>
+
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#d9d9d9"/>
+                        </Trigger>
+                        <Trigger Property="IsKeyboardFocused" Value="True">
+                            <Setter Property="BorderBrush" TargetName="border" Value="#d9d9d9"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                    
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+
+</ResourceDictionary>

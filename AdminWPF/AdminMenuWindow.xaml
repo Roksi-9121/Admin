@@ -1,0 +1,111 @@
+﻿<Window x:Class="AdminWPF.AdminMenuWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AdminWPF"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:Icon="http://metro.mahapps.com/winfx/xaml/iconpacks"
+        mc:Ignorable="d"
+        Title="Admin Menu" Height="550" Width="1000" WindowStyle="None" WindowStartupLocation="CenterScreen" Background="Transparent">
+
+    <Border CornerRadius="25" Background="#f7f6f4">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Ліва панель навігації з градієнтом -->
+            <Border Grid.RowSpan="3" CornerRadius="25" Margin="20 20 0 20">
+                <Border.Background>
+                    <LinearGradientBrush>
+                        <GradientStop Color="#5483B3" Offset="0"/>
+                        <GradientStop Color="#052659" Offset="0.8"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+
+                <StackPanel>
+                    <!-- Логотип -->
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0 30 10 0">
+                        <Grid>
+                            <Border Background="White" Width="35" Height="35" CornerRadius="50"/>
+
+                            <Border Width="35" Height="35" BorderBrush="White" BorderThickness="3" CornerRadius="50" Margin="0,2,0,2">
+                                <Border.Effect>
+                                    <DropShadowEffect BlurRadius="10" Opacity="0.3"/>
+                                </Border.Effect>
+
+                                <Icon:PackIconMaterial Kind="SendOutline" Width="15" Height="15" Foreground="#052659" VerticalAlignment="Center"
+                                                       HorizontalAlignment="Center" Margin="3 0 0 2">
+                                    <Icon:PackIconMaterial.LayoutTransform>
+                                        <RotateTransform Angle="-45"/>
+                                    </Icon:PackIconMaterial.LayoutTransform>
+                                </Icon:PackIconMaterial>
+                            </Border>
+                        </Grid>
+
+                        <StackPanel>
+                            <TextBlock Text="Trading" Foreground="White" FontSize="25" Margin="5 0 0 0">
+                                <TextBlock.Effect>
+                                    <DropShadowEffect BlurRadius="10" Opacity="0.3"/>
+                                </TextBlock.Effect>
+                            </TextBlock>
+                            <TextBlock Text="company" Foreground="White" FontSize="10" Margin="25 -8 0 0">
+                                <TextBlock.Effect>
+                                    <DropShadowEffect BlurRadius="10" Opacity="0.3"/>
+                                </TextBlock.Effect>
+                            </TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+
+
+                    <RadioButton Margin="15 50 15 0" Style="{StaticResource menuRadioButton}" IsChecked="{Binding IsUserControlActive}" Command="{Binding ShowUserControlCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="AccountCog" Width="20" Height="20" Margin="0 0 10 0" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=RadioButton}}"/>
+                            <TextBlock Text="User Control" VerticalAlignment="Center" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=RadioButton}}"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton Margin="15 10 15 0" Style="{StaticResource menuRadioButton}" IsChecked="{Binding IsSearchUserActive}" Command="{Binding ShowSearchUserCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="AccountSearch" Width="20" Height="20" Margin="0 0 10 0" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=RadioButton}}"/>
+                            <TextBlock Text="Search" VerticalAlignment="Center" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=RadioButton}}"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton Margin="15 10 15 0" Style="{StaticResource menuRadioButton}" IsChecked="{Binding IsAddNewUserActive}" Command="{Binding ShowAddNewUserCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="PlusCircle" Width="20" Height="20" Margin="0 0 10 0" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=RadioButton}}"/>
+                            <TextBlock Text="Add new user" VerticalAlignment="Center" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=RadioButton}}"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton Margin="15 10 15 0" Style="{StaticResource menuRadioButton}" IsChecked="{Binding IsSettingActive}" Command="{Binding ShowSettingCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="Cog" Width="20" Height="20" Margin="0 0 10 0" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=RadioButton}}"/>
+                            <TextBlock Text="Setting" VerticalAlignment="Center" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=RadioButton}}"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                    <RadioButton Margin="15 120 15 0"   Style="{StaticResource menuRadioButton}"  Command="{Binding LogoutCommand}">
+                        <StackPanel Orientation="Horizontal">
+                            <Icon:PackIconMaterial Kind="Logout" Width="20" Height="20" Margin="0 0 10 0" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=RadioButton}}"/>
+                            <TextBlock Text="Logout" VerticalAlignment="Center" Foreground="{Binding Foreground, RelativeSource={RelativeSource AncestorType=RadioButton}}"/>
+                        </StackPanel>
+                    </RadioButton>
+
+                </StackPanel>
+            </Border>
+
+            
+            <!-- Контент для вибраного UserControl -->
+            <ContentControl Grid.Column="1" Grid.RowSpan="2" Content="{Binding CurrentControl}"/>
+        </Grid>
+    </Border>
+</Window>
